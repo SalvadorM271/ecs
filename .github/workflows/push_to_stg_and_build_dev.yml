@@ -3,28 +3,13 @@ name: "create a pull request from development to staging"
 on:
   push:
     branches:
-      - "development"
+      - development
   pull_request:
 
 #this action creates a pull request from the development to the staging branch
 #but before that runs tests to check if there are no conflicts in the push files
 
 jobs:
-  stagingPromotion:
-    name: create pull req
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: staging
-      - name: Reset promotion branch
-        run: |
-          git fetch origin development:development
-          git reset --hard development
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v4
-        with:
-          branch: staging-release #creates a temporary branch for the pull request
   #deploy to aws
   terraform:
     name: "Deploy-Development-Environment"
@@ -81,7 +66,23 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/develop' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/development' && github.event_name == 'push'
         run: |
           export TF_WORKSPACE="development"
           terraform apply -auto-approve
+  stagingPromotion:
+    needs: terraform
+    name: create pull req
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: staging
+      - name: Reset promotion branch
+        run: |
+          git fetch origin development:development
+          git reset --hard development
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          branch: staging-release #creates a temporary branch for the pull request
