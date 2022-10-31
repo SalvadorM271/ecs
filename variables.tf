@@ -28,7 +28,7 @@ variable protocol {}
 variable log_driver {}
 //variable log_group_name {}
 //rol for task exc
-variable rol_name {}
+//variable rol_name {}
 //service
 //variable service_name {}
 variable service_desired_count {}
