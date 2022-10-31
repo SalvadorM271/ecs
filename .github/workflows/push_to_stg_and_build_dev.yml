@@ -85,4 +85,4 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
-          branch: staging-release #creates a temporary branch for the pull reques
+          branch: staging-release #creates a temporary branch for the pull request
