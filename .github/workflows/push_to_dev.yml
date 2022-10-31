@@ -1,0 +1,27 @@
+name: "create a pull request from feature to development"
+
+on:
+  push:
+    branches:
+      - "feature/*"
+
+#this action creates a pull request from the feature branch to the development branch
+#but before that runs tests to check if there are no conflicts in the push files
+
+jobs:
+  #pushes code to the nex branch using a pull request
+  developmentPromotion:
+    name: create pull req
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: development
+      - name: Reset promotion branch
+        run: |
+          git fetch origin feature/new_feature:feature/new_feature
+          git reset --hard feature/new_feature
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          branch: development #creates a temporary branch for the pull request
