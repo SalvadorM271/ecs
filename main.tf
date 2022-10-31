@@ -251,7 +251,7 @@ module "esc_cluster" {
     log_group_name = "${var.name}-cluster_group-${var.environment}"
     region = var.region
     //rol for task exc
-    rol_name = var.rol_name
+    rol_name = "${var.name}-cluster-rol-${var.environment}"
     //service
     service_name = "${var.name}-service-${var.environment}"
     service_desired_count = var.service_desired_count
