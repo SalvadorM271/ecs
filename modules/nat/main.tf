@@ -5,6 +5,7 @@ resource "aws_nat_gateway" "main" {
   tags = {
     Environment = var.environment
   }
+  depends_on = [aws_eip.nat]
 }
 
 resource "aws_eip" "nat" {
