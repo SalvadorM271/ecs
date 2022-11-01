@@ -325,4 +325,27 @@ module "autoscaling" {
     cpu_target_value = var.cpu_target_value
 }
 
+//cloudflare--------------------------------------------------
+
+provider "cloudflare" {
+  version = "~> 2.0"
+  email = var.cloudflare_email
+  api_key = var.cloudflare_api_key
+}
+
+resource "cloudflare_zone" "myDomain" {
+  zone= "salvadormenendez.social"
+}
+
+resource "cloudflare_record" "record" {
+  zone_id = cloudflare_zone.myDomain.id
+  name = var.environment
+  value = module.load_balancer.myDNS //load balancer dns
+  type = "CNAME"
+  proxied = false
+  ttl = "auto"
+}
+
+
+
 
