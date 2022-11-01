@@ -346,7 +346,7 @@ resource "cloudflare_record" "record" {
   value = module.load_balancer.myDNS //load balancer dns
   type = "CNAME"
   proxied = false
-  ttl = "auto"
+  ttl = 1
 }
 
 
