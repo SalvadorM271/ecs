@@ -4,6 +4,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "4.36.1"
     }
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 3.0"
+    }
   }
   required_version = ">= 0.12"
   backend "remote" {
@@ -324,5 +328,27 @@ module "autoscaling" {
     predefined_metric_type_cpu = var.predefined_metric_type_cpu
     cpu_target_value = var.cpu_target_value
 }
+
+//cloudflare--------------------------------------------------
+
+provider "cloudflare" {
+  email = var.cloudflare_email
+  api_key = var.cloudflare_api_key
+}
+
+resource "cloudflare_zone" "myDomain" {
+  zone= "salvadormenendez.social"
+}
+
+resource "cloudflare_record" "record" {
+  zone_id = cloudflare_zone.myDomain.id
+  name = var.environment
+  value = module.load_balancer.myDNS //load balancer  dns
+  type = "CNAME"
+  proxied = false
+  ttl = 1
+}
+
+
 
 
