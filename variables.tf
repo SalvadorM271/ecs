@@ -93,3 +93,4 @@ variable cpu_target_value {}
 //cloudflare
 variable cloudflare_email {}
 variable cloudflare_api_key {}
+variable domain_id {}

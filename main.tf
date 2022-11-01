@@ -336,12 +336,8 @@ provider "cloudflare" {
   api_key = var.cloudflare_api_key
 }
 
-resource "cloudflare_zone" "myDomain" {
-  zone= "salvadormenendez.social"
-}
-
 resource "cloudflare_record" "record" {
-  zone_id = cloudflare_zone.myDomain.id
+  zone_id = var.domain_id
   name = var.environment
   value = module.load_balancer.myDNS //load balancer  dns
   type = "CNAME"
