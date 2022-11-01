@@ -82,6 +82,7 @@ jobs:
     needs: terraform
     name: create pull req
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/staging' && github.event_name == 'push'
     steps:
       - uses: actions/checkout@v3
         with:
