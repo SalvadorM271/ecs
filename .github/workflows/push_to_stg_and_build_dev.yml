@@ -80,7 +80,7 @@ jobs:
           terraform apply -auto-approve
   stagingPromotion:
     needs: terraform
-    #if: github.event_name == 'push' #testing-------------------------------------
+    if: github.event_name == 'push' #testing-------------------------------------
     name: create pull req
     runs-on: ubuntu-latest
     steps:
