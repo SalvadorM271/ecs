@@ -4,6 +4,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "4.36.1"
     }
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "~> 3.0"
+    }
   }
   required_version = ">= 0.12"
   backend "remote" {
@@ -328,7 +332,6 @@ module "autoscaling" {
 //cloudflare--------------------------------------------------
 
 provider "cloudflare" {
-  version = "~> 2.0"
   email = var.cloudflare_email
   api_key = var.cloudflare_api_key
 }
