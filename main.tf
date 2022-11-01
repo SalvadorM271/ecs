@@ -343,7 +343,7 @@ resource "cloudflare_zone" "myDomain" {
 resource "cloudflare_record" "record" {
   zone_id = cloudflare_zone.myDomain.id
   name = var.environment
-  value = module.load_balancer.myDNS //load balancer dns
+  value = module.load_balancer.myDNS //load balancer  dns
   type = "CNAME"
   proxied = false
   ttl = 1
