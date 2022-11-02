@@ -356,6 +356,7 @@ module "atlas-cluster" {
   db_user = var.db_user
   db_password = var.db_password
   cidr = var.cidr
+  environment = var.environment
 }
 
 output "dburi" {

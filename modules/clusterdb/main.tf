@@ -32,6 +32,7 @@ resource "mongodbatlas_database_user" "dbuser" {
 
   roles {
     role_name     = "readWrite"
+    database_name = var.environment
   }
 
 }
