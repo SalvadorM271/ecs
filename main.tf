@@ -246,7 +246,7 @@ module "esc_cluster" {
     container_cpu = var.container_cpu
     container_memory = var.container_memory
     container_name = "${var.name}-container-${var.environment}"
-    container_image = var.container_image //image uploaded to ecr, check if you can  upload an initial image when creating a ecr rep
+    container_image = var.container_image //image uploaded to ecr, check if you can  upload an initial image when creating a ecr repo
     essential = var.essential
     container_port = var.container_port
     container_host_port = var.container_host_port
