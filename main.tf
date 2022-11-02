@@ -9,12 +9,6 @@ terraform {
       version = "~> 3.0"
     }
   }
-  required_providers {
-    mongodbatlas = {
-      source = "mongodb/mongodbatlas"
-      version = "1.4.6"
-    }
-  }
   required_version = ">= 0.12"
   backend "remote" {
     organization = "personal_demos"

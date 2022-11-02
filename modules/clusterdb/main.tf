@@ -1,3 +1,11 @@
+terraform {
+  required_providers {
+    mongodbatlas = {
+      source = "mongodb/mongodbatlas"
+    }
+  }
+}
+
 resource "mongodbatlas_cluster" "db-cluster" {
   project_id              = var.atlas_project_id
   name                    = var.db_cluster_name
