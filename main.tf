@@ -8,6 +8,10 @@ terraform {
       source  = "cloudflare/cloudflare"
       version = "~> 3.0"
     }
+    mongodbatlas = {
+      source = "mongodb/mongodbatlas"
+      version = "0.9.1"
+    }
   }
   required_version = ">= 0.12"
   backend "remote" {
@@ -329,7 +333,7 @@ module "autoscaling" {
     cpu_target_value = var.cpu_target_value
 }
 
-//cloudflare--------------------------------------------------
+//cloudflare--------------------------------------------------add variables below this to other envs
 
 provider "cloudflare" {
   email = var.cloudflare_email
@@ -343,6 +347,25 @@ resource "cloudflare_record" "record" {
   type = "CNAME"
   proxied = false
   ttl = 1
+}
+
+//atlas
+
+provider "mongodbatlas" {
+  public_key = var.atlas_public_key
+  private_key = var.atlas_private_key
+}
+
+module "atlas-cluster" {
+  atlas_project_id = var.atlas_project_id
+  db_cluster_name = "${var.name}-dbcluster-${var.environment}"
+  db_user = var.db_user
+  db_password = var.db_password
+  cidr = var.cidr
+}
+
+output "dburi" {
+  value = module.atlas-cluster.db_cn_string
 }
 
 
