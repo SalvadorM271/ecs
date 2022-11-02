@@ -346,7 +346,7 @@ resource "cloudflare_record" "record" {
   ttl = 1
 }
 
-//atlas
+//atlas c
 
 module "atlas-cluster" {
   source = "./modules/clusterdb"
