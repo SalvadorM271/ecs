@@ -254,6 +254,7 @@ module "esc_cluster" {
     log_driver = var.log_driver
     log_group_name = "${var.name}-cluster_group-${var.environment}"
     region = var.region
+    uridb = "${module.atlas-cluster.db_cn_string}/mernapp-${var.environment}?retryWrites=true&w=majority"//-----------------------------
     //rol for task exc
     rol_name = "${var.name}-cluster-rol-${var.environment}"
     //service
