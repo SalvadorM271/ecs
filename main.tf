@@ -357,6 +357,7 @@ provider "mongodbatlas" {
 }
 
 module "atlas-cluster" {
+  source = "./modules/clusterdb"
   atlas_project_id = var.atlas_project_id
   db_cluster_name = "${var.name}-dbcluster-${var.environment}"
   db_user = var.db_user
