@@ -31,7 +31,7 @@ resource "aws_ecs_task_definition" "main" {
     name        = var.container_name
     image       = var.container_image
     essential   = var.essential
-    environment = [{"name": "ENVIRONMENT", "value": "${var.environment}"}] //this envs will be pass to the container to select deploy enviroment
+    environment = [{"name": "ENVIRONMENT", "value": "${var.environment}"}, {"name": "URI", "value": "${var.uridb}"}] //this envs will be pass to the container to select deploy enviroment
     portMappings = [{
       protocol      = var.protocol
       containerPort = tonumber(var.container_port)
