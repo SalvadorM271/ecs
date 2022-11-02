@@ -254,7 +254,7 @@ module "esc_cluster" {
     log_driver = var.log_driver
     log_group_name = "${var.name}-cluster_group-${var.environment}"
     region = var.region
-    uridb = "${module.atlas-cluster.db_cn_string}/mernapp-${var.environment}?retryWrites=true&w=majority"//-----------------------------
+    uridb = "${var.name}-cluster-rol-${var.environment}"
     //rol for task exc
     rol_name = "${var.name}-cluster-rol-${var.environment}"
     //service
@@ -346,14 +346,14 @@ resource "cloudflare_record" "record" {
   ttl = 1
 }
 
-//atlas c
+//atlas
 
 module "atlas-cluster" {
   source = "./modules/clusterdb"
   atlas_public_key = var.atlas_public_key
   atlas_private_key = var.atlas_private_key
   atlas_project_id = var.atlas_project_id
-  db_cluster_name = "${var.environment}-db"
+  db_cluster_name = "${var.name}-dbcluster-${var.environment}"
   db_user = var.db_user
   db_password = var.db_password
   cidr = var.cidr
