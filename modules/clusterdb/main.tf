@@ -7,6 +7,11 @@ terraform {
   }
 }
 
+provider "mongodbatlas" {
+  public_key = var.atlas_public_key
+  private_key = var.atlas_private_key
+}
+
 resource "mongodbatlas_cluster" "db-cluster" {
   project_id              = var.atlas_project_id
   name                    = var.db_cluster_name

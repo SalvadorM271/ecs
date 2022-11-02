@@ -347,13 +347,10 @@ resource "cloudflare_record" "record" {
 
 //atlas
 
-provider "mongodbatlas" {
-  public_key = var.atlas_public_key
-  private_key = var.atlas_private_key
-}
-
 module "atlas-cluster" {
   source = "./modules/clusterdb"
+  atlas_public_key = var.atlas_public_key
+  atlas_private_key = var.atlas_private_key
   atlas_project_id = var.atlas_project_id
   db_cluster_name = "${var.name}-dbcluster-${var.environment}"
   db_user = var.db_user
