@@ -27,7 +27,7 @@ provider "aws" {
     region = "us-east-2"
 }
 
-// vpc and internet gateway, one igw is enough for the two availability zones
+// vpc and internet gateway, one igw is enough for the two availability zone
 
 resource "aws_vpc" "main" {
   cidr_block           = var.cidr
