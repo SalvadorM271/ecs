@@ -127,6 +127,7 @@ module "route_table_private_1" {
     nat_gateway_id = module.nat_av_1.myNat.id
     //module from where i get output .output value 
     subnet_id = module.private_subnet_1.mySubnet.id
+    depends_on = [module.nat_av_1]
 }
 
 module "route_table_private_2" {
@@ -136,6 +137,7 @@ module "route_table_private_2" {
     nat_gateway_id = module.nat_av_2.myNat.id
     //module from where i get output .output value 
     subnet_id = module.private_subnet_2.mySubnet.id
+    depends_on = [module.nat_av_2]
 }
 
 // security group for application load balancer
