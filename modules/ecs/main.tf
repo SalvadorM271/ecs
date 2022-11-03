@@ -42,7 +42,7 @@ resource "aws_ecs_task_definition" "main" {
       options = {
         awslogs-group         = aws_cloudwatch_log_group.main_lgr.name
         awslogs-stream-prefix = "ecs"
-        //awslogs-create-group = "true" // creates new log group with awslogs-grou
+        //awslogs-create-group = "true" // creates new log group with awslogs-group
         awslogs-region        = var.region
       }
     }
