@@ -24,7 +24,7 @@ resource "mongodbatlas_cluster" "db-cluster" {
 }
 
 
-resource "mongodbatlas_database_user" "dbuser" {
+/*resource "mongodbatlas_database_user" "dbuser" {
   username           = var.db_user
   password           = var.db_password
   project_id         = var.atlas_project_id
@@ -35,7 +35,7 @@ resource "mongodbatlas_database_user" "dbuser" {
     database_name = var.environment
   }
 
-}
+}*/
 
 resource "mongodbatlas_project_ip_access_list" "test" {
   project_id = var.atlas_project_id

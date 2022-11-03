@@ -5,6 +5,6 @@ output "db_cn_string" {
     //dburi = "qntsjuk"
 }
 
-output "db_user_o" {
+/*output "db_user_o" {
     value = mongodbatlas_database_user.dbuser.username
-}
+}*/
