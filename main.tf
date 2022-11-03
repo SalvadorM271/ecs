@@ -173,7 +173,7 @@ resource "aws_security_group" "alb-sg" {
   }
 }
 
-// security group for ECS task (allows access to the app exposed port) may need another----------------------------------
+// security group for ECS task (allows access to the app exposed port) may need another--------------------------------
 
 resource "aws_security_group" "ecs_tasks_sg" {
   name   = "${var.name}-task-sg-${var.environment}"
