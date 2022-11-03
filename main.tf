@@ -265,7 +265,7 @@ module "esc_cluster" {
     health_check_grace_period_seconds = var.health_check_grace_period_seconds
     scheduling_strategy = var.scheduling_strategy
     aws_alb_target_group_arn = module.load_balancer.myAlbGr.arn
-    private_subnets = [module.private_subnet_1.mySubnet, module.private_subnet_2.mySubnet] //passing my two private subnets
+    private_subnets = [module.private_subnet_1.mySubnet, module.private_subnet_2.mySubnet] //passing my two private subnet
     ecs_service_security_groups = [aws_security_group.ecs_tasks_sg]
     depends_on = [module.load_balancer]
 }
