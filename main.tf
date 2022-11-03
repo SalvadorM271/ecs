@@ -330,7 +330,7 @@ module "autoscaling" {
     cpu_target_value = var.cpu_target_value
 }
 
-//cloudflare--------------------------------------------------add variables below this to other envs
+//cloudflare--------------------------------------------------add variables below this to other env
 
 provider "cloudflare" {
   email = var.cloudflare_email
