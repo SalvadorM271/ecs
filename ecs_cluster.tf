@@ -14,7 +14,7 @@ module "esc_cluster" {
     container_cpu = var.container_cpu
     container_memory = var.container_memory
     container_name = "${var.name}-container-${var.environment}"
-    container_image = var.container_image //image uploaded to ecr, check if you can  upload an initial image when creating a ecr repo
+    container_image = var.container_image 
     essential = var.essential
     container_port = var.container_port
     container_host_port = var.container_host_port
@@ -22,7 +22,7 @@ module "esc_cluster" {
     log_driver = var.log_driver
     log_group_name = "${var.name}-cluster_group-${var.environment}"
     region = var.region
-    uridb = module.atlas-cluster.db_cn_string //---------------------------------------------------
+    uridb = module.atlas-cluster.db_cn_string 
     //rol for task exc
     rol_name = "${var.name}-cluster-rol-${var.environment}"
     //service

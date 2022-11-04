@@ -16,12 +16,8 @@ module "load_balancer" {
     alb_tg_protocol = var.alb_tg_protocol
     vpc_id = aws_vpc.main.id
     alb_tg_target_type = var.alb_tg_target_type
-    //alb_tg_healthy_threshold = var.alb_tg_healthy_threshold //need to check
-    //alb_tg_interval = var.alb_tg_interval //need to check
-    alb_tg_matcher = var.alb_tg_matcher //need to check
-    //alb_tg_timeout = var.alb_tg_timeout //need to check
+    alb_tg_matcher = var.alb_tg_matcher 
     alb_tg_path = var.alb_tg_path
-    //alb_tg_unhealthy_threshold = var.alb_tg_unhealthy_threshold //need to check
     // http listener
     http_listener_port = var.http_listener_port
     http_listener_protocol = var.http_listener_protocol
@@ -32,5 +28,5 @@ module "load_balancer" {
     // https listener
     https_listener_port = var.https_listener_port
     https_listener_protocol = var.https_listener_protocol
-    alb_tls_cert_arn = var.alb_tls_cert_arn // this one needs some looking into
+    //alb_tls_cert_arn = var.alb_tls_cert_arn 
 }
