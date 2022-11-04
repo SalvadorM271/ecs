@@ -19,7 +19,7 @@ https://github.com/SalvadorM271/mern-app/tree/main
 
 ## How it works 
 
-First we set up our VPC once the VPC is ready is time to create the subnets i have created two in two different avelability zones in the 
+First we set up our VPC once the VPC is ready is time to create the subnets i have created two in two diferent avelability zones in the 
 us-east-2 region one private subnet and one public, after that an internet gateway was created to gran internet access to the public
 subnet with the help of a routing table, there is also a need for the private subnet to connect to the outside but not directly,
 for that i use a NAT gateway one on each AZ because if one AZ falls and Im only using one NAT the whole infra is gonna fall so i decided to
@@ -29,7 +29,7 @@ Once that is done is time to create an ECS cluster but before that an ECR reposi
 to create the ECR manually because it migh cause problems at the momment of erasing the infrastructure since the images within will 
 have to be erase first but beyond that the fact that the infrastructure is destroy does not necessarily means that we want to get rid
 of the images two, so it might become an inconvenience to create it with terraform, I also decided to have one repository for each
-environment image since is best to have each environment as separeted as possible to the point that sometimes they are done in differen region
+environment image since is best to have each environment as separeted as possible to the point that sometimes they are done in diferent region
 
 Once we have the ECR is time to focus on the ECS cluster in order to host the application a task definition and a service were created
 but there is also a need for a database for that I use a MongoDB Atlas cluster for this one im creating one cluster for each environment
