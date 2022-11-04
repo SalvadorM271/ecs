@@ -20,13 +20,9 @@ resource "aws_alb_target_group" "main_gr" {
   target_type = var.alb_tg_target_type
 
   health_check {
-    //healthy_threshold   = var.alb_tg_healthy_threshold
-    //interval            = var.alb_tg_interval
     protocol            = var.alb_tg_protocol
     matcher             = var.alb_tg_matcher
-    //timeout             = var.alb_tg_timeout
     path                = var.alb_tg_path
-    //unhealthy_threshold = var.alb_tg_unhealthy_threshold
   }
 
   tags = {
