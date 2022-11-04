@@ -28,4 +28,4 @@ variable http_listener_redirect_status_code {}
 // https listener
 variable https_listener_port {}
 variable https_listener_protocol {}
-//variable alb_tls_cert_arn {}
+variable alb_tls_cert_arn {}

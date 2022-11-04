@@ -10,6 +10,6 @@ resource "cloudflare_record" "record" {
   name = var.environment
   value = module.load_balancer.myDNS //load balancer  dns
   type = "CNAME"
-  proxied = true
+  proxied = false
   ttl = 1
 }
