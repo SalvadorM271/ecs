@@ -28,5 +28,5 @@ module "load_balancer" {
     // https listener
     https_listener_port = var.https_listener_port
     https_listener_protocol = var.https_listener_protocol
-    //alb_tls_cert_arn = var.alb_tls_cert_arn 
+    alb_tls_cert_arn = var.alb_tls_cert_arn 
 }
