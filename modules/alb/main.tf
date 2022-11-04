@@ -20,13 +20,9 @@ resource "aws_alb_target_group" "main_gr" {
   target_type = var.alb_tg_target_type
 
   health_check {
-    //healthy_threshold   = var.alb_tg_healthy_threshold
-    //interval            = var.alb_tg_interval
     protocol            = var.alb_tg_protocol
     matcher             = var.alb_tg_matcher
-    //timeout             = var.alb_tg_timeout
     path                = var.alb_tg_path
-    //unhealthy_threshold = var.alb_tg_unhealthy_threshold
   }
 
   tags = {
@@ -60,7 +56,7 @@ resource "aws_alb_listener" "https" {
     protocol          = var.https_listener_protocol
 
     ssl_policy        = "ELBSecurityPolicy-2016-08"
-    certificate_arn   = var.alb_tls_cert_arn
+    //certificate_arn   = var.alb_tls_cert_arn
 
     default_action {
         target_group_arn = aws_alb_target_group.main_gr.id
