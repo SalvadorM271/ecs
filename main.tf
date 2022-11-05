@@ -33,7 +33,7 @@ resource "aws_sns_topic" "xxxx_cloudwatch_notifications" {
 resource "aws_sns_topic_subscription" "xxxx_cloudwatch_notifications" {
     topic_arn = "${aws_sns_topic.xxxx_cloudwatch_notifications.arn}"
     protocol  = "email"
-    endpoint  = "caravana271@gmail.com"
+    endpoint  = "leandromenendez971@gmail.com"
 }
 
 resource "aws_cloudwatch_metric_alarm" "high_cpu_policy_alarm" {
