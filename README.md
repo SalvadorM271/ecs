@@ -19,28 +19,19 @@ https://github.com/SalvadorM271/mern-app/tree/main
 
 ## How it works 
 
-First we set up our VPC once the VPC is ready is time to create the subnets i have created two in two diferent avelability zones in the 
-us-east-2 region one private subnet and one public, after that an internet gateway was created to gran internet access to the public
-subnet with the help of a routing table, there is also a need for the private subnet to connect to the outside but not directly,
-for that i use a NAT gateway one on each AZ because if one AZ falls and Im only using one NAT the whole infra is gonna fall so i decided to
-use two i might me a bit more expensive but it gives the infrastructure more resiliency which is worth the price.
+First we set up our VPC once the is ready, is time to create the subnets i have created two in two different availability zones in the us-east-2 region, one private and one public, after that I created an internet gateway to gran internet access to the public subnet with the help of a routing table, there is also a need for the private subnet to connect to the outside but not directly, for that i use a NAT gateway on each AZ because if one the AZ fails and only one NAT is taking all the traffic the whole infrastructure falls so i decided to use two even if it might me a bit more expensive, than using just one since it gives the infrastructure more resiliency which is worth the price.
 
-Once that is done is time to create an ECS cluster but before that an ECR repository with the application image is needed, i decided
-to create the ECR manually because it migh cause problems at the momment of erasing the infrastructure since the images within will 
-have to be erase first but beyond that the fact that the infrastructure is destroy does not necessarily means that we want to get rid
-of the images two, so it might become an inconvenience to create it with terraform, I also decided to have one repository for each
-environment image since is best to have each environment as separeted as possible to the point that sometimes they are done in diferent region
+Once that is done is time to create an ECS cluster but before that an ECR repository with the application image is needed, i decided to create the ECR manually because it might cause problems at the moment of erasing the infrastructure since the images within will have to be erase first, but beyond that the fact that the infrastructure is destroy does not necessarily means that we want to get rid of the images too, so it might become an inconvenience to create it with terraform, I also decided to have one repository for each environment image since is best to have each environment as separated as possible from each other, to the point that in some cases they are created in different regions.
 
-Once we have the ECR is time to focus on the ECS cluster in order to host the application a task definition and a service were created
-but there is also a need for a database for that I use a MongoDB Atlas cluster for this one im creating one cluster for each environment
-with terraform since is best to have our environments as separated as possible.
+Once we have the ECR is time to focus on the ECS cluster in order to host the application a task definition and a service were created but there is also a need for a database for that I use a MongoDB Atlas cluster, im creating one cluster for each environment with terraform since is best to have our environments as separated as possible.
 
-After that there is a need to route the traffic that is comming from the outside to the application and since Im using two AZ is best two use
-an application load balance two distribute the load between the replicas of the application taking care  of the inbound traffic, for the outbound
-traffic the NATs are use, again i have one on each AZ for resiliency.
+Once that is done there is a need to route the traffic that is coming from the outside to the application and since Im using two AZ is best to use an application load balancer to distribute the load between the replicas of the application.
 
-And finally i configure the autoscaling to increaae or lower the number of replicas base on the cpu and memmory usage of the FARGATE container
-which are the serverless alternative to using EC2 instances on our ECS cluster also i use cloudflare in order to manage my domain and connect it to the load balancer.
+As for my personal domain Im using cloudflare to connect it to my load balancer since is free it would save the cost of using route 53.
+
+And finally i configure the autoscaling to increase or lower the number of replicas base on the CPU and memory usage of the FARGATE container which are the serverless alternative to using EC2 instances on our ECS cluster.
+
+Autoscaling is very important to save cost since it will not only create more instances when there is more demand but also decrease the number when there is a lesser demand saving us some money on compute power.
 
 ## State
 
@@ -67,3 +58,11 @@ then we must add the changes
 after that we need to commit our changes
 
 `git commit -m "example commit"`
+
+and finnaly
+
+`git push`
+
+## Diagram
+
+<img src="./images/ecs.drawio.svg" width="850"/>
