@@ -47,6 +47,7 @@ resource "aws_cloudwatch_metric_alarm" "high_cpu_policy_alarm" {
   period              = "60"
   statistic           = "Maximum"
   threshold           = 1
+  treat_missing_data = "notBreaching"
   alarm_actions     = [aws_sns_topic.xxxx_cloudwatch_notifications.arn]
 
   dimensions = {
