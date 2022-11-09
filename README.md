@@ -65,4 +65,4 @@ and finnaly
 
 ## Diagram
 
-<img src="./images/ecs.drawio.svg" width="850"/>
+<img src="./images/ecs.png" width="850"/>
